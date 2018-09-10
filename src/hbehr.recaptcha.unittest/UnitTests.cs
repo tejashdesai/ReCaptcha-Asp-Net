@@ -163,7 +163,7 @@ namespace hbehr.recaptcha.unittest
             string captchaString = captcha.ToHtmlString();
             Assert.AreEqual("<div class='g-recaptcha' data-sitekey='my-public-key'></div><script src='https://www.google.com/recaptcha/api.js?hl=no'></script>", captchaString);
             
-            captcha = ReCaptcha.GetCaptcha(ReCaptchaLanguage.PortugueseBrazil);
+            captcha = ReCaptcha.GetCaptcha(null, ReCaptchaLanguage.PortugueseBrazil);
             captchaString = captcha.ToHtmlString();
             Assert.AreEqual("<div class='g-recaptcha' data-sitekey='my-public-key'></div><script src='https://www.google.com/recaptcha/api.js?hl=pt-BR'></script>", captchaString);
 
@@ -177,7 +177,7 @@ namespace hbehr.recaptcha.unittest
         public void AssertScriptDivIsCorrectWithLanguageOverrideConfiguration()
         {
             ReCaptcha.Configure("my-public-key", "my-secret-key", ReCaptchaLanguage.EnglishUs);
-            IHtmlString captcha = ReCaptcha.GetCaptcha(ReCaptchaLanguage.PortugueseBrazil);
+            IHtmlString captcha = ReCaptcha.GetCaptcha(null, ReCaptchaLanguage.PortugueseBrazil);
             string captchaString = captcha.ToHtmlString();
             Assert.AreEqual("<div class='g-recaptcha' data-sitekey='my-public-key'></div><script src='https://www.google.com/recaptcha/api.js?hl=pt-BR'></script>", captchaString);
         }
